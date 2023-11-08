@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef} from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MapOverlay from './mapOverlay';
+//@ts-ignore
 import fetchAllArticles from './functions/fetchArticles';
 import calculateDistance from './functions/distanceCalculation';
 import { motion } from 'framer-motion';
@@ -68,6 +69,7 @@ const MapComponent: React.FC = () => {
     (async () => {
       try {
         //const articles = await fetchAllArticles();
+        //Example news incase fetch doesnt work
         const articles = [
           {
             "URL": "https://news.example.com/article-001",
@@ -203,7 +205,7 @@ const MapComponent: React.FC = () => {
     if (coords && map.current) {
 
     const el = document.createElement('div');
-    el.className = 'custom-marker'; // Add the custom class here
+    el.className = 'custom-marker'; 
     el.id = `marker-${markerId}`;
 
     const marker = new mapboxgl.Marker(el)
@@ -229,9 +231,9 @@ const MapComponent: React.FC = () => {
         src="logo.png"
         alt=""
         className="scale-50"
-        initial={{ scale: 0.5, y: 0 }} // Initial state: middle of the screen, scaled down to 50%
-        animate={{ scale: 0.3, y: '-45vh' }} // Animate to: top of the screen, scaled down to 40%
-        transition={{ duration: 1, delay: 10}} // Define the transition duration
+        initial={{ scale: 0.5, y: 0 }} 
+        animate={{ scale: 0.25, y: '-45vh' }} 
+        transition={{ duration: 1, delay: 10}} 
       />
     </div>
       </div>

@@ -26,7 +26,7 @@ body {
 }
 
 .custom-marker {
-  background-image: url('smurfcat.png'); /* Custom icon image */
+  background-image: url('https://staticdelivery.nexusmods.com/images/2229/118335798-1695154731.png'); /* Custom icon image */
   background-size: cover;
   width: 30px; /* Width of the marker */
   height: 30px; /* Height of the marker */

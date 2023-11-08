@@ -21,13 +21,13 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
   const summaryRef = useRef<HTMLDivElement>(null);
   const locationRef = useRef<HTMLDivElement>(null);
   const longlatRef = useRef<HTMLDivElement>(null);
-  // State variable to trigger re-render
+
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
 
-  // Function to handle resize and update state
+
   const handleResize = () => {
     const newSize = {
       width: window.innerWidth,
@@ -35,13 +35,13 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
     };
     setWindowSize(newSize);
 
-    // Update the summary position based on the new size
+
     updateSummaryPosition(newSize.width, newSize.height);
     updateLocationPosition(newSize.width, newSize.height);
     updateLonglatPosition(newSize.width, newSize.height);
 
-    // If you need to re-initialize the SVG drawing, you would need to do it here
-    // Clear the existing SVG and redraw
+
+
     if (svgContainerRef.current) {
       svgContainerRef.current.innerHTML = '';
       const draw = SVG().addTo(svgContainerRef.current).size('100%', '100%');
@@ -52,7 +52,7 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
  path.stroke({ width: 2, color: '#FFFFFF' });
  path.fill('none');
 
- // Get the total length of the path
+
  const length = path.length();
 
 
@@ -64,11 +64,11 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
     }
   };
 
-  // Function to update the summary position
+
   const updateSummaryPosition = (width: number, height: number) => {
     if (summaryRef.current) {
-      // Update the style of the summary element to position it at a specific point
-      // You can change `height / 2.5` and `width / 2` to whatever you need
+
+
       summaryRef.current.style.top = `${height / 1.6}px`;
       summaryRef.current.style.left = `${width / 2}px`;
       summaryRef.current.style.transform = 'translate(-50%, -50%)';
@@ -77,8 +77,8 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
 
   const updateLocationPosition = (width: number, height: number) => {
     if (locationRef.current) {
-      // Update the style of the summary element to position it at a specific point
-      // You can change `height / 2.5` and `width / 2` to whatever you need
+
+
       locationRef.current.style.top = `${height / 2.3}px`;
       locationRef.current.style.left = `${width / 1.7}px`;
       locationRef.current.style.transform = 'translate(-50%, -50%)';
@@ -87,8 +87,8 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
 
   const updateLonglatPosition = (width: number, height: number) => {
     if (longlatRef.current) {
-      // Update the style of the summary element to position it at a specific point
-      // You can change `height / 2.5` and `width / 2` to whatever you need
+
+
       longlatRef.current.style.top = `${height / 2.2}px`;
       longlatRef.current.style.left = `${width / 1.7}px`;
       longlatRef.current.style.transform = 'translate(-50%, -50%)';
@@ -101,7 +101,7 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
   useEffect(() => {
     window.addEventListener('resize', handleResize);
 
-    // Trigger the initial drawing and summary position update
+
     handleResize();
 
     return () => {
@@ -118,12 +118,11 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
 <motion.div
   ref={locationRef}
   className='absolute text-white font-semibold monospace text-xl shadow-lg'
-  initial={{ opacity: 0 }} // Start from outside the screen to the right
-  animate={{ opacity: 100 }} // Animate to its original position
-  transition={{duration: 1 }} // Define the type of transition
+  initial={{ opacity: 0 }} 
+  animate={{ opacity: 100 }} 
+  transition={{duration: 1 }} 
   style={{
-    top: `${windowSize.height / 2}px`, // Initially set the position based on the screen size
-    left: '50%',
+    top: `${windowSize.height / 2}px`, 
     transform: 'translate(-50%, -50%)'
   }}
 >
@@ -141,9 +140,9 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
         }}
       >
         <motion.div
-          initial={{ opacity: 0, y: 20 }} // Start with opacity 0 and 20px down
-          animate={{ opacity: 1, y: 0 }}  // Animate to opacity 1 and final position
-          transition={{ duration: 0.5 }}  // Duration of 0.5 seconds for the transition
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5 }}  
         >
           {scrambledSummary}
             <div className='mt-4 relative'>
@@ -161,7 +160,7 @@ const MapOverlay: React.FC<MapOverlayProps> = ({ article }) => {
 
 
       <div ref={longlatRef} className='absolute font-thin monospace p-2' style={{
-        top: `${windowSize.height / 2}px`, // Initially set the position based on the screen size
+        top: `${windowSize.height / 2}px`, 
         left: '50%',
         transform: 'translate(-50%, -50%)'
       }}>
