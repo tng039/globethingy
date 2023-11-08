@@ -237,7 +237,12 @@ const MapComponent: React.FC = () => {
       />
     </div>
       </div>
-  {isVisible && <div className='bg-black opacity-40 w-screen h-screen z-49 absolute'> </div>}
+  {isVisible && <motion.div
+  className='bg-black opacity-40 w-screen h-screen z-49 absolute'
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 0.4 }}
+>
+</motion.div>}
   {isVisible && <MapOverlay article={articles[currentArticleIndex]} />}
   </div>);
 };
