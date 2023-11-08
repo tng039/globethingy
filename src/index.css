@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.custom-marker {
+  background-image: url('smurfcat.png'); /* Custom icon image */
+  background-size: cover;
+  width: 30px; /* Width of the marker */
+  height: 30px; /* Height of the marker */
+  border-radius: 50%; /* Optional: for circular markers */
+  border: 2px solid white; /* Optional: for border around the marker */
+}
+
+.mapboxgl-marker {
+  
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.2s;
+  will-change: transform;
+}
+
+.mapboxgl-ctrl {
+  display: none;
+}
+
+.mapboxgl-ctrl-attrib {
+  display: none;
+}
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+
+.monospace {
+  font-family: 'Courier New', monospace;
+}
